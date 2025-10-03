@@ -1,0 +1,127 @@
+/* ===== Full Hero Background ===== */
+.header {
+  background: linear-gradient(135deg, #6366f1, #9333ea, #ec4899);
+  color: white;
+  padding: 5rem 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Subtle overlay gradient */
+.header::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+/* ===== Container Layout ===== */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    grid-template-columns: 1fr 0.8fr; /* smaller image */
+  }
+}
+
+/* ===== Text Section ===== */
+.header-content h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.header-content h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+}
+
+.header-content p {
+  font-size: 1.05rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* ===== Waving Hand ===== */
+.wave img {
+  width: 42px;
+  height: 42px;
+  display: inline-block;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
+}
+
+/* ===== CTA Button ===== */
+.cta-btn {
+  background: linear-gradient(135deg, #6366f1, #9333ea);
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+  opacity: 0.95;
+}
+
+/* ===== Image Section ===== */
+.header-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-image img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%; 
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.header-image img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+
+/* ===== Animations ===== */
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60%,100% { transform: rotate(0deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

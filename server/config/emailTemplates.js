@@ -1,0 +1,1 @@
+export const Email_Verify_Template=``
