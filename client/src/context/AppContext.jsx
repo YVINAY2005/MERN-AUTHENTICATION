@@ -13,19 +13,19 @@ export const AppContextProvider = ({ children }) => {
 
   const getAuthState=async()=>{
     try {
-        const { data } = await axios.get(`${backendUrl}v1/api/auth/is-authenticated`)
+        const { data } = await axios.get(`${backendUrl}/v1/api/auth/is-authenticated`)
         if (data.success) {
             setIsLoggedIn(true);
             getUserData();
         }
     } catch (error) {
-         toast.error(data.message);
+         toast.error(error.response?.data?.message || error.message);
     }
   }
 
   const getUserData = async () => {
     try {
-      const { data } = await axios.get(`${backendUrl}v1/api/user/userdata`);
+      const { data } = await axios.get(`${backendUrl}/v1/api/user/userdata`);
       if (data.success) {
         setUserData(data.userData);
       } else {
