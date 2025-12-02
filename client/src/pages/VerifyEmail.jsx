@@ -61,9 +61,12 @@ const VerifyEmail = () => {
   }
 
   useEffect(()=>{
-    isLoggedIn && userData && userData.isAccountVerified && navigate('/');
-
-  },[isLoggedIn,userData])
+    if (!isLoggedIn) {
+      navigate('/login');
+    } else if (userData && userData.isAccountVerified) {
+      navigate('/');
+    }
+  },[isLoggedIn, userData])
   return (
    <div>
   <img

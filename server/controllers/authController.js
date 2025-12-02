@@ -35,6 +35,7 @@ export const register = async (req, res) => {
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      path: '/'
     });
 // sending welcome email to user
     const mailOptions = {
@@ -57,9 +58,9 @@ export const register = async (req, res) => {
       token,
     });
   } catch (error) {
-    return res.json({ success: false, message: error.message });
+    return res.json({success:false, message: error.message });
   }
-};
+}
 
 
 export const login = async(req, res) => {
@@ -88,9 +89,9 @@ export const login = async(req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',    
-            
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+            path: '/'
         });
 
         return res.json({success:true, message: "Logged in successfully" , user, token});
@@ -106,15 +107,15 @@ export const logout = async(req, res) => {
     res.clearCookie('token', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',    
-        
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+        path: '/',
+        maxAge: 0
     });
     return res.json({success:true, message: "Logged out successfully" });
-    
+
    } catch (error) {
     return res.json({success:false, message: error.message });
-    
+
    }
 }
 
